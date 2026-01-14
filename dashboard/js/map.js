@@ -24,7 +24,6 @@ function loadCampusMapImage() {
 
     // Try common image names
     const possibleImages = [
-        'assets/campus-map/New Project (43).png',
         'assets/campus-map/monash-campus-map.png',
         'assets/campus-map/monash-campus-map.jpg',
         'assets/campus-map/campus-map.png',
