@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monash Malaysia Air Quality Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <h1>🌱 Air Quality Monitor</h1>
+                <p class="subtitle">Monash Malaysia Campus</p>
+            </div>
+            <div class="header-info">
+                <div class="team-badge">Monash Smokers - No Smoking Team</div>
+                <div id="currentTime" class="current-time"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Alert Banner -->
+    <div id="alertBanner" class="alert-banner hidden">
+        <div class="alert-content">
+            <span class="alert-icon">⚠️</span>
+            <span id="alertMessage" class="alert-message"></span>
+            <button class="alert-close" onclick="closeAlert()">×</button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Overall Status</h3>
+                <div class="status-card">
+                    <div class="status-item">
+                        <span class="status-label">Campus AQI</span>
+                        <span id="overallAQI" class="status-value aqi-good">45</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Active Sensors</span>
+                        <span id="activeSensors" class="status-value">8/8</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Smoke Alerts Today</span>
+                        <span id="smokeAlertsToday" class="status-value alert-count">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Quick Stats</h3>
+                <div class="quick-stats">
+                    <div class="stat-item">
+                        <span class="stat-icon">🌡️</span>
+                        <div class="stat-info">
+                            <span class="stat-label">Temperature</span>
+                            <span id="avgTemp" class="stat-value">28°C</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">💧</span>
+                        <div class="stat-info">
+                            <span class="stat-label">Humidity</span>
+                            <span id="avgHumidity" class="stat-value">75%</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">🌫️</span>
+                        <div class="stat-info">
+                            <span class="stat-label">Avg PM2.5</span>
+                            <span id="avgPM25" class="stat-value">12 μg/m³</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Recent Alerts</h3>
+                <div id="alertHistory" class="alert-history">
+                    <p class="no-alerts">No alerts today</p>
+                </div>
+            </div>
+
+            <div class="sidebar-section testing-panel">
+                <h3>🧪 Testing Panel</h3>
+                <p class="test-description">Simulate smoke detection for demonstration purposes</p>
+                <button id="testSmokeBtn" class="test-btn">Trigger Smoke Alert</button>
+                <div id="testStatus" class="test-status hidden"></div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Campus Map Section -->
+            <section class="map-section">
+                <div class="section-header">
+                    <h2>Campus Air Quality Map</h2>
+                    <div class="map-legend">
+                        <span class="legend-item">
+                            <span class="legend-dot good"></span> Good (0-50)
+                        </span>
+                        <span class="legend-item">
+                            <span class="legend-dot moderate"></span> Moderate (51-100)
+                        </span>
+                        <span class="legend-item">
+                            <span class="legend-dot unhealthy"></span> Unhealthy (101-150)
+                        </span>
+                        <span class="legend-item">
+                            <span class="legend-dot hazardous"></span> Hazardous (151+)
+                        </span>
+                    </div>
+                </div>
+                <div class="map-container" id="campusMap">
+                    <div class="map-placeholder">
+                        <p>📍 Upload campus map to dashboard/assets/campus-map/</p>
+                        <p class="data-source-note">
+                            Note: Using simulated air quality data based on Monash Malaysia Campus area.
+                            <br>Real sensor data will be integrated when available.
+                        </p>
+                    </div>
+                    <!-- Sensor markers will be dynamically added here -->
+                </div>
+            </section>
+
+            <!-- Metrics Grid -->
+            <section class="metrics-grid">
+                <div class="metric-card">
+                    <h3>PM2.5 Levels</h3>
+                    <canvas id="pm25Chart"></canvas>
+                </div>
+                <div class="metric-card">
+                    <h3>PM10 Levels</h3>
+                    <canvas id="pm10Chart"></canvas>
+                </div>
+                <div class="metric-card">
+                    <h3>CO2 Concentration</h3>
+                    <canvas id="co2Chart"></canvas>
+                </div>
+                <div class="metric-card">
+                    <h3>Temperature & Humidity</h3>
+                    <canvas id="tempHumidChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Sensor Details -->
+            <section class="sensor-details-section">
+                <h2>Sensor Locations</h2>
+                <div id="sensorGrid" class="sensor-grid">
+                    <!-- Sensor cards will be dynamically generated -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for Sensor Details -->
+    <div id="sensorModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeSensorModal()">&times;</span>
+            <h2 id="modalSensorName"></h2>
+            <div id="modalSensorDetails"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/alerts.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
