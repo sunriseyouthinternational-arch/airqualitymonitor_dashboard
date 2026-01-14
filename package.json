@@ -1,0 +1,24 @@
+{
+  "name": "monash-air-quality-dashboard",
+  "version": "1.0.0",
+  "description": "Air Quality Monitoring Dashboard for Monash Malaysia Campus",
+  "main": "dashboard/index.html",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "start": "python -m http.server 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunriseyouthinternational-arch/airqualitymonitor_dashboard.git"
+  },
+  "keywords": [
+    "air-quality",
+    "monitoring",
+    "dashboard",
+    "smoke-detection",
+    "monash",
+    "environmental"
+  ],
+  "author": "Monash Smokers - No Smoking Team",
+  "license": "MIT"
+}
