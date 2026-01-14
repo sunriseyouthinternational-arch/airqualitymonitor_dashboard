@@ -543,12 +543,22 @@ body {
     border-radius: 12px;
     padding: 1.5rem;
     border: 1px solid var(--border-color);
+    height: 350px;
+    display: flex;
+    flex-direction: column;
 }
 
 .metric-card h3 {
     font-size: 1.1rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.metric-card canvas {
+    max-height: 250px;
+    height: 250px !important;
+    width: 100% !important;
 }
 
 /* Sensor Grid */

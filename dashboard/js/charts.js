@@ -16,6 +16,13 @@ const chartColors = {
 const commonOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    animation: {
+        duration: 750
+    },
+    interaction: {
+        mode: 'nearest',
+        intersect: false
+    },
     plugins: {
         legend: {
             labels: {
@@ -23,7 +30,8 @@ const commonOptions = {
                 font: {
                     family: 'Inter',
                     size: 11
-                }
+                },
+                padding: 10
             }
         },
         tooltip: {
@@ -47,7 +55,10 @@ const commonOptions = {
                 font: {
                     family: 'Inter',
                     size: 10
-                }
+                },
+                maxRotation: 0,
+                autoSkip: true,
+                maxTicksLimit: 10
             }
         },
         y: {
@@ -60,7 +71,8 @@ const commonOptions = {
                 font: {
                     family: 'Inter',
                     size: 10
-                }
+                },
+                maxTicksLimit: 6
             }
         }
     }
@@ -332,30 +344,33 @@ function initTempHumidChart() {
 
 // Update all charts with new data
 function updateCharts() {
-    if (pm25Chart) {
-        pm25Chart.data.labels = historicalData.timestamps;
-        pm25Chart.data.datasets[0].data = historicalData.pm25;
-        pm25Chart.update('none'); // Update without animation for smooth real-time updates
-    }
+    // Use requestAnimationFrame for smoother updates
+    requestAnimationFrame(() => {
+        if (pm25Chart) {
+            pm25Chart.data.labels = historicalData.timestamps;
+            pm25Chart.data.datasets[0].data = historicalData.pm25;
+            pm25Chart.update('none'); // Update without animation for smooth real-time updates
+        }
 
-    if (pm10Chart) {
-        pm10Chart.data.labels = historicalData.timestamps;
-        pm10Chart.data.datasets[0].data = historicalData.pm10;
-        pm10Chart.update('none');
-    }
+        if (pm10Chart) {
+            pm10Chart.data.labels = historicalData.timestamps;
+            pm10Chart.data.datasets[0].data = historicalData.pm10;
+            pm10Chart.update('none');
+        }
 
-    if (co2Chart) {
-        co2Chart.data.labels = historicalData.timestamps;
-        co2Chart.data.datasets[0].data = historicalData.co2;
-        co2Chart.update('none');
-    }
+        if (co2Chart) {
+            co2Chart.data.labels = historicalData.timestamps;
+            co2Chart.data.datasets[0].data = historicalData.co2;
+            co2Chart.update('none');
+        }
 
-    if (tempHumidChart) {
-        tempHumidChart.data.labels = historicalData.timestamps;
-        tempHumidChart.data.datasets[0].data = historicalData.temp;
-        tempHumidChart.data.datasets[1].data = historicalData.humidity;
-        tempHumidChart.update('none');
-    }
+        if (tempHumidChart) {
+            tempHumidChart.data.labels = historicalData.timestamps;
+            tempHumidChart.data.datasets[0].data = historicalData.temp;
+            tempHumidChart.data.datasets[1].data = historicalData.humidity;
+            tempHumidChart.update('none');
+        }
+    });
 }
 
 // Initialize all charts
@@ -365,16 +380,11 @@ function initializeCharts() {
         updateSensorData();
     }
 
-    initPM25Chart();
-    initPM10Chart();
-    initCO2Chart();
-    initTempHumidChart();
+    // Initialize charts after a short delay to ensure DOM is ready
+    setTimeout(() => {
+        initPM25Chart();
+        initPM10Chart();
+        initCO2Chart();
+        initTempHumidChart();
+    }, 100);
 }
-
-// Set chart container heights
-document.addEventListener('DOMContentLoaded', function() {
-    const chartCanvases = document.querySelectorAll('.metric-card canvas');
-    chartCanvases.forEach(canvas => {
-        canvas.style.height = '250px';
-    });
-});
