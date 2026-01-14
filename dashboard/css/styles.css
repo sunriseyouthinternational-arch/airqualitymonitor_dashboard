@@ -402,14 +402,103 @@ body {
     background: var(--aqi-hazardous);
 }
 
+.map-and-sensors {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem;
+}
+
 .map-container {
     position: relative;
     background: var(--bg-tertiary);
     border-radius: 6px;
     height: 300px;
     min-height: 300px;
+    width: fit-content;
+    min-width: 400px;
+    max-width: 700px;
     overflow: hidden;
     border: 2px solid var(--border-color);
+}
+
+.sensor-list {
+    background: var(--bg-tertiary);
+    border-radius: 6px;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.sensor-list h3 {
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.sensor-grid-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.sensor-grid-compact .sensor-card {
+    background: var(--bg-secondary);
+    border-radius: 6px;
+    padding: 0.5rem;
+    border-left: 3px solid;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.sensor-grid-compact .sensor-card:hover {
+    transform: translateX(3px);
+    background: var(--bg-tertiary);
+}
+
+.sensor-grid-compact .sensor-card.good {
+    border-left-color: var(--aqi-good);
+}
+
+.sensor-grid-compact .sensor-card.moderate {
+    border-left-color: var(--aqi-moderate);
+}
+
+.sensor-grid-compact .sensor-card.unhealthy {
+    border-left-color: var(--aqi-unhealthy);
+}
+
+.sensor-grid-compact .sensor-card.hazardous {
+    border-left-color: var(--aqi-hazardous);
+}
+
+.sensor-grid-compact .sensor-card h4 {
+    font-size: 0.8rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.sensor-grid-compact .sensor-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.3rem;
+    font-size: 0.7rem;
+}
+
+.sensor-grid-compact .sensor-metric-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sensor-grid-compact .metric-label {
+    color: var(--text-secondary);
+}
+
+.sensor-grid-compact .metric-value {
+    font-weight: 600;
+    color: var(--text-primary);
 }
 
 .map-placeholder {

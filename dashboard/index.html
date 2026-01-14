@@ -116,15 +116,23 @@
                         </span>
                     </div>
                 </div>
-                <div class="map-container" id="campusMap">
-                    <div class="map-placeholder">
-                        <p>📍 Upload campus map to dashboard/assets/campus-map/</p>
-                        <p class="data-source-note">
-                            Note: Using simulated air quality data based on Monash Malaysia Campus area.
-                            <br>Real sensor data will be integrated when available.
-                        </p>
+                <div class="map-and-sensors">
+                    <div class="map-container" id="campusMap">
+                        <div class="map-placeholder">
+                            <p>📍 Upload campus map to dashboard/assets/campus-map/</p>
+                            <p class="data-source-note">
+                                Note: Using simulated air quality data based on Monash Malaysia Campus area.
+                                <br>Real sensor data will be integrated when available.
+                            </p>
+                        </div>
+                        <!-- Sensor markers will be dynamically added here -->
                     </div>
-                    <!-- Sensor markers will be dynamically added here -->
+                    <div class="sensor-list">
+                        <h3>Sensor Locations</h3>
+                        <div id="sensorGrid" class="sensor-grid-compact">
+                            <!-- Sensor cards will be dynamically generated -->
+                        </div>
+                    </div>
                 </div>
             </section>
 
