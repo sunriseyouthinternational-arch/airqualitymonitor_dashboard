@@ -1,7 +1,6 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/dashboard/$1" }
-  ],
+  "buildCommand": "echo 'No build required'",
+  "outputDirectory": "dashboard",
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [

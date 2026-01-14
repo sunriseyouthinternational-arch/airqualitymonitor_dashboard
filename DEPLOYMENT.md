@@ -31,23 +31,20 @@ Branch: `claude/air-quality-dashboard-5QgON`
 
 #### Step 4: Configure Project Settings
 
-Vercel will detect it's a static site. Configure these settings:
+Vercel will auto-detect the configuration from `vercel.json`. You can accept the defaults:
 
 **Project Name:** `monash-air-quality-dashboard` (or your preferred name)
 
-**Framework Preset:** Select **"Other"** (it's a vanilla HTML/CSS/JS project)
+**Framework Preset:** Select **"Other"**
 
-**Root Directory:** Leave as `./` (root)
+**Root Directory:** `./` (keep as root - vercel.json handles the rest)
 
 **Build Settings:**
-- Build Command: Leave empty (no build needed)
-- Output Directory: Leave empty (Vercel will auto-detect)
-- Install Command: Leave empty
+- **Build Command:** Leave empty (automatically configured)
+- **Output Directory:** Leave empty (automatically configured from vercel.json)
+- **Install Command:** Leave empty
 
-**Advanced Settings (click to expand):**
-- Add these if prompted:
-  - **Public Directory:** `dashboard`
-  - **Node Version:** Leave default
+✅ **No need to configure anything else!** The `vercel.json` file handles all the configuration automatically.
 
 #### Step 5: Deploy!
 
@@ -174,7 +171,28 @@ After deploying, verify these features work:
 
 ### Issue: 404 Error or Blank Page
 
-**Solution:** Check that the root directory is set to `dashboard` in your deployment settings.
+**Solutions:**
+
+1. **Redeploy after latest changes:**
+   - The `vercel.json` has been updated to fix this
+   - Go to your Vercel project dashboard
+   - Click "Deployments" tab
+   - Click the three dots (•••) on the latest deployment
+   - Click "Redeploy"
+
+2. **If still getting 404:**
+   - Go to Project Settings → General
+   - Under "Build & Development Settings"
+   - Set **Output Directory** to: `dashboard`
+   - Click "Save"
+   - Redeploy
+
+3. **Alternative - Use Root Directory setting:**
+   - Go to Project Settings → General
+   - Under "Root Directory"
+   - Click "Edit" and set to: `dashboard`
+   - Click "Save"
+   - Redeploy
 
 ### Issue: Campus Map Not Showing
 
