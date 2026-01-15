@@ -14,7 +14,7 @@ const sensorLocations = [
     {
         id: 'sensor-2',
         name: 'Designated Smoking Zone',
-        position: { x: 48.2, y: 91.8 }, // Pixel: (870, 1381)
+        position: { x: 48.2, y: 89.6 }, // Pixel: (870, 1347) - aligned with Sports Complex Exit
         area: 'Smoking Area'
     },
     {
@@ -26,13 +26,13 @@ const sensorLocations = [
     {
         id: 'sensor-4',
         name: 'Sports Complex Exit',
-        position: { x: 91.2, y: 89.6 }, // Pixel: (1645, 1347) - moved up 30px
+        position: { x: 91.2, y: 89.6 }, // Pixel: (1645, 1347)
         area: 'Sports Complex'
     },
     {
         id: 'sensor-5',
         name: 'Under BRT Station',
-        position: { x: 18.8, y: 90.0 }, // Pixel: (339, 1353) - moved up 60px total
+        position: { x: 18.8, y: 89.6 }, // Pixel: (339, 1347) - aligned with Sports Complex Exit
         area: 'Transport Hub'
     },
     {
