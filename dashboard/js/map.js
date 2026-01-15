@@ -133,10 +133,38 @@ function showSensorTooltip(event, sensorId) {
     const rect = marker.getBoundingClientRect();
     const containerRect = mapContainer.getBoundingClientRect();
 
-    tooltip.style.left = `${rect.left - containerRect.left + 50}px`;
-    tooltip.style.top = `${rect.top - containerRect.top}px`;
-
     mapContainer.appendChild(tooltip);
+
+    // Smart positioning based on sensor location to avoid edge overflow
+    const tooltipRect = tooltip.getBoundingClientRect();
+    const markerCenterX = rect.left - containerRect.left;
+    const markerCenterY = rect.top - containerRect.top;
+    const containerWidth = containerRect.width;
+    const containerHeight = containerRect.height;
+
+    let left, top;
+
+    // Determine horizontal position (left or right of marker)
+    if (markerCenterX > containerWidth * 0.6) {
+        // Sensor on right side - position tooltip to the left
+        left = markerCenterX - tooltipRect.width - 10;
+    } else {
+        // Sensor on left/center - position tooltip to the right
+        left = markerCenterX + 50;
+    }
+
+    // Determine vertical position (above or below marker)
+    if (markerCenterY > containerHeight * 0.7) {
+        // Sensor on bottom - position tooltip above
+        top = markerCenterY - tooltipRect.height - 10;
+    } else {
+        // Sensor on top/middle - position tooltip at same level or below
+        top = markerCenterY;
+    }
+
+    // Apply calculated positions with bounds checking
+    tooltip.style.left = `${Math.max(5, Math.min(left, containerWidth - tooltipRect.width - 5))}px`;
+    tooltip.style.top = `${Math.max(5, Math.min(top, containerHeight - tooltipRect.height - 5))}px`;
 }
 
 // Hide sensor tooltip

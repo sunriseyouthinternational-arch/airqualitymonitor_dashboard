@@ -26,13 +26,13 @@ const sensorLocations = [
     {
         id: 'sensor-4',
         name: 'Sports Complex Exit',
-        position: { x: 91.2, y: 91.6 }, // Pixel: (1645, 1377)
+        position: { x: 91.2, y: 89.6 }, // Pixel: (1645, 1347) - moved up 30px
         area: 'Sports Complex'
     },
     {
         id: 'sensor-5',
         name: 'Under BRT Station',
-        position: { x: 18.8, y: 93.9 }, // Pixel: (339, 1413)
+        position: { x: 18.8, y: 91.9 }, // Pixel: (339, 1383) - moved up 30px
         area: 'Transport Hub'
     },
     {
