@@ -3,42 +3,43 @@
 // for the Monash Malaysia Campus area (Bandar Sunway, Selangor)
 
 // Sensor locations around campus
+// Positions based on campus map coordinates (1804 x 1504 pixels)
 const sensorLocations = [
     {
         id: 'sensor-1',
-        name: 'North Building',
-        position: { x: 50, y: 15 }, // Top center (AQI 110 area)
-        area: 'Academic Zone'
+        name: 'Parking Lot Entry',
+        position: { x: 49.9, y: 4.6 }, // Pixel: (900, 69)
+        area: 'Parking Area'
     },
     {
         id: 'sensor-2',
         name: 'East Wing',
-        position: { x: 75, y: 25 }, // Upper right (AQI 98 area)
+        position: { x: 75, y: 25 },
         area: 'Academic Zone'
     },
     {
         id: 'sensor-3',
-        name: 'Sports Complex',
-        position: { x: 80, y: 65 }, // Bottom right (AQI 89 area)
-        area: 'Recreation Area'
+        name: 'Behind Basketball & Futsal Court',
+        position: { x: 78.6, y: 54.5 }, // Pixel: (1418, 820)
+        area: 'Sports Area'
     },
     {
         id: 'sensor-4',
-        name: 'Student Center',
-        position: { x: 60, y: 75 }, // Bottom center-right (AQI 68 area)
-        area: 'Student Area'
+        name: 'Sports Complex Exit',
+        position: { x: 91.2, y: 91.6 }, // Pixel: (1645, 1377)
+        area: 'Sports Complex'
     },
     {
         id: 'sensor-5',
-        name: 'West Building',
-        position: { x: 20, y: 80 }, // Bottom left (AQI 97 area)
-        area: 'Academic Zone'
+        name: 'Under BRT Station',
+        position: { x: 18.8, y: 93.9 }, // Pixel: (339, 1413)
+        area: 'Transport Hub'
     },
     {
         id: 'sensor-6',
-        name: 'Library',
-        position: { x: 25, y: 50 }, // Left center (AQI 76 area)
-        area: 'Library'
+        name: 'Back of Parking Lot',
+        position: { x: 25.3, y: 11.8 }, // Pixel: (457, 178)
+        area: 'Parking Area'
     }
 ];
 
