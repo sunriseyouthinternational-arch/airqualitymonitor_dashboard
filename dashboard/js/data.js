@@ -32,7 +32,7 @@ const sensorLocations = [
     {
         id: 'sensor-5',
         name: 'Under BRT Station',
-        position: { x: 18.8, y: 91.9 }, // Pixel: (339, 1383) - moved up 30px
+        position: { x: 18.8, y: 90.0 }, // Pixel: (339, 1353) - moved up 60px total
         area: 'Transport Hub'
     },
     {
