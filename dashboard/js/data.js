@@ -6,51 +6,39 @@
 const sensorLocations = [
     {
         id: 'sensor-1',
-        name: 'Library Entrance',
-        position: { x: 20, y: 30 }, // Percentage positions
+        name: 'North Building',
+        position: { x: 50, y: 15 }, // Top center (AQI 110 area)
         area: 'Academic Zone'
     },
     {
         id: 'sensor-2',
-        name: 'Student Hub',
-        position: { x: 45, y: 25 },
-        area: 'Student Area'
+        name: 'East Wing',
+        position: { x: 75, y: 25 }, // Upper right (AQI 98 area)
+        area: 'Academic Zone'
     },
     {
         id: 'sensor-3',
-        name: 'Engineering Building',
-        position: { x: 70, y: 35 },
-        area: 'Academic Zone'
-    },
-    {
-        id: 'sensor-4',
-        name: 'Medical Building',
-        position: { x: 30, y: 60 },
-        area: 'Academic Zone'
-    },
-    {
-        id: 'sensor-5',
         name: 'Sports Complex',
-        position: { x: 65, y: 70 },
+        position: { x: 80, y: 65 }, // Bottom right (AQI 89 area)
         area: 'Recreation Area'
     },
     {
+        id: 'sensor-4',
+        name: 'Student Center',
+        position: { x: 60, y: 75 }, // Bottom center-right (AQI 68 area)
+        area: 'Student Area'
+    },
+    {
+        id: 'sensor-5',
+        name: 'West Building',
+        position: { x: 20, y: 80 }, // Bottom left (AQI 97 area)
+        area: 'Academic Zone'
+    },
+    {
         id: 'sensor-6',
-        name: 'Parking Area A',
-        position: { x: 15, y: 75 },
-        area: 'Parking'
-    },
-    {
-        id: 'sensor-7',
-        name: 'Cafeteria',
-        position: { x: 50, y: 55 },
-        area: 'Food Court'
-    },
-    {
-        id: 'sensor-8',
-        name: 'Main Gate',
-        position: { x: 85, y: 50 },
-        area: 'Entry Point'
+        name: 'Library',
+        position: { x: 25, y: 50 }, // Left center (AQI 76 area)
+        area: 'Library'
     }
 ];
 
