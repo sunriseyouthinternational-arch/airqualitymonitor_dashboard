@@ -13,9 +13,9 @@ const sensorLocations = [
     },
     {
         id: 'sensor-2',
-        name: 'East Wing',
-        position: { x: 75, y: 25 },
-        area: 'Academic Zone'
+        name: 'Designated Smoking Zone',
+        position: { x: 48.2, y: 91.8 }, // Pixel: (870, 1381)
+        area: 'Smoking Area'
     },
     {
         id: 'sensor-3',
